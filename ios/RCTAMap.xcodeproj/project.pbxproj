@@ -1,0 +1,392 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F30D01F81CDC9653002C929B /* RCTConvert+AMapKit.m in Sources */ = {isa = PBXBuildFile; fileRef = F30D01F71CDC9653002C929B /* RCTConvert+AMapKit.m */; };
+		F37CE9251CF2D3BC00D0457D /* SMCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = F37CE9241CF2D3BC00D0457D /* SMCalloutView.m */; };
+		F37CE9451CF2D43D00D0457D /* AMap.m in Sources */ = {isa = PBXBuildFile; fileRef = F37CE9271CF2D43D00D0457D /* AMap.m */; };
+		F37CE9461CF2D43D00D0457D /* AMapCallout.m in Sources */ = {isa = PBXBuildFile; fileRef = F37CE9291CF2D43D00D0457D /* AMapCallout.m */; };
+		F37CE9471CF2D43D00D0457D /* AMapCalloutManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F37CE92B1CF2D43D00D0457D /* AMapCalloutManager.m */; };
+		F37CE9481CF2D43D00D0457D /* AMapCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = F37CE92D1CF2D43D00D0457D /* AMapCircle.m */; };
+		F37CE9491CF2D43D00D0457D /* AMapCircleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F37CE92F1CF2D43D00D0457D /* AMapCircleManager.m */; };
+		F37CE94A1CF2D43D00D0457D /* AMapCoordinate.m in Sources */ = {isa = PBXBuildFile; fileRef = F37CE9311CF2D43D00D0457D /* AMapCoordinate.m */; };
+		F37CE94B1CF2D43D00D0457D /* AMapManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F37CE9331CF2D43D00D0457D /* AMapManager.m */; };
+		F37CE94C1CF2D43D00D0457D /* AMapMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = F37CE9351CF2D43D00D0457D /* AMapMarker.m */; };
+		F37CE94D1CF2D43D00D0457D /* AMapMarkerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F37CE9371CF2D43D00D0457D /* AMapMarkerManager.m */; };
+		F37CE94E1CF2D43D00D0457D /* AMapPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = F37CE9391CF2D43D00D0457D /* AMapPolygon.m */; };
+		F37CE94F1CF2D43D00D0457D /* AMapPolygonManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F37CE93B1CF2D43D00D0457D /* AMapPolygonManager.m */; };
+		F37CE9501CF2D43D00D0457D /* AMapPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = F37CE93D1CF2D43D00D0457D /* AMapPolyline.m */; };
+		F37CE9511CF2D43D00D0457D /* AMapPolylineManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F37CE93F1CF2D43D00D0457D /* AMapPolylineManager.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F3360C801CDA051D00FD88BC /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		F30D015A1CDB2D3A002C929B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		F30D015C1CDB2D47002C929B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F30D015E1CDB2D54002C929B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		F30D01601CDB2D62002C929B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		F30D01621CDB2D77002C929B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		F30D01641CDB2D84002C929B /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		F30D01661CDB2D98002C929B /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		F30D01681CDB2DAC002C929B /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
+		F30D016A1CDB2DBC002C929B /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		F30D016C1CDB2DC5002C929B /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		F30D01F61CDC9653002C929B /* RCTConvert+AMapKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RCTConvert+AMapKit.h"; sourceTree = "<group>"; };
+		F30D01F71CDC9653002C929B /* RCTConvert+AMapKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RCTConvert+AMapKit.m"; sourceTree = "<group>"; };
+		F3360C821CDA051D00FD88BC /* libRCTAMap.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRCTAMap.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3360C951CDA075500FD88BC /* MAMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MAMapKit.framework; path = ../../../../../../../Downloads/MAMapKit.framework; sourceTree = "<group>"; };
+		F3360C971CDA090B00FD88BC /* AMapSearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AMapSearchKit.framework; path = ../../../../../../../Downloads/AMapSearchKit.framework; sourceTree = "<group>"; };
+		F37CE9231CF2D3BC00D0457D /* SMCalloutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMCalloutView.h; path = Callout/SMCalloutView.h; sourceTree = "<group>"; };
+		F37CE9241CF2D3BC00D0457D /* SMCalloutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMCalloutView.m; path = Callout/SMCalloutView.m; sourceTree = "<group>"; };
+		F37CE9261CF2D43D00D0457D /* AMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMap.h; sourceTree = "<group>"; };
+		F37CE9271CF2D43D00D0457D /* AMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMap.m; sourceTree = "<group>"; };
+		F37CE9281CF2D43D00D0457D /* AMapCallout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMapCallout.h; sourceTree = "<group>"; };
+		F37CE9291CF2D43D00D0457D /* AMapCallout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMapCallout.m; sourceTree = "<group>"; };
+		F37CE92A1CF2D43D00D0457D /* AMapCalloutManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMapCalloutManager.h; sourceTree = "<group>"; };
+		F37CE92B1CF2D43D00D0457D /* AMapCalloutManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMapCalloutManager.m; sourceTree = "<group>"; };
+		F37CE92C1CF2D43D00D0457D /* AMapCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMapCircle.h; sourceTree = "<group>"; };
+		F37CE92D1CF2D43D00D0457D /* AMapCircle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMapCircle.m; sourceTree = "<group>"; };
+		F37CE92E1CF2D43D00D0457D /* AMapCircleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMapCircleManager.h; sourceTree = "<group>"; };
+		F37CE92F1CF2D43D00D0457D /* AMapCircleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMapCircleManager.m; sourceTree = "<group>"; };
+		F37CE9301CF2D43D00D0457D /* AMapCoordinate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMapCoordinate.h; sourceTree = "<group>"; };
+		F37CE9311CF2D43D00D0457D /* AMapCoordinate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMapCoordinate.m; sourceTree = "<group>"; };
+		F37CE9321CF2D43D00D0457D /* AMapManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMapManager.h; sourceTree = "<group>"; };
+		F37CE9331CF2D43D00D0457D /* AMapManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMapManager.m; sourceTree = "<group>"; };
+		F37CE9341CF2D43D00D0457D /* AMapMarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMapMarker.h; sourceTree = "<group>"; };
+		F37CE9351CF2D43D00D0457D /* AMapMarker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMapMarker.m; sourceTree = "<group>"; };
+		F37CE9361CF2D43D00D0457D /* AMapMarkerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMapMarkerManager.h; sourceTree = "<group>"; };
+		F37CE9371CF2D43D00D0457D /* AMapMarkerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMapMarkerManager.m; sourceTree = "<group>"; };
+		F37CE9381CF2D43D00D0457D /* AMapPolygon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMapPolygon.h; sourceTree = "<group>"; };
+		F37CE9391CF2D43D00D0457D /* AMapPolygon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMapPolygon.m; sourceTree = "<group>"; };
+		F37CE93A1CF2D43D00D0457D /* AMapPolygonManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMapPolygonManager.h; sourceTree = "<group>"; };
+		F37CE93B1CF2D43D00D0457D /* AMapPolygonManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMapPolygonManager.m; sourceTree = "<group>"; };
+		F37CE93C1CF2D43D00D0457D /* AMapPolyline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMapPolyline.h; sourceTree = "<group>"; };
+		F37CE93D1CF2D43D00D0457D /* AMapPolyline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMapPolyline.m; sourceTree = "<group>"; };
+		F37CE93E1CF2D43D00D0457D /* AMapPolylineManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMapPolylineManager.h; sourceTree = "<group>"; };
+		F37CE93F1CF2D43D00D0457D /* AMapPolylineManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMapPolylineManager.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F3360C7F1CDA051D00FD88BC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F3360C791CDA051D00FD88BC = {
+			isa = PBXGroup;
+			children = (
+				F3360C941CDA06A800FD88BC /* Frameworks */,
+				F3360C841CDA051D00FD88BC /* RCTAMap */,
+				F3360C831CDA051D00FD88BC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F3360C831CDA051D00FD88BC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F3360C821CDA051D00FD88BC /* libRCTAMap.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F3360C841CDA051D00FD88BC /* RCTAMap */ = {
+			isa = PBXGroup;
+			children = (
+				F37CE9221CF2D31A00D0457D /* Callout */,
+				F37CE9261CF2D43D00D0457D /* AMap.h */,
+				F37CE9271CF2D43D00D0457D /* AMap.m */,
+				F37CE9281CF2D43D00D0457D /* AMapCallout.h */,
+				F37CE9291CF2D43D00D0457D /* AMapCallout.m */,
+				F37CE92A1CF2D43D00D0457D /* AMapCalloutManager.h */,
+				F37CE92B1CF2D43D00D0457D /* AMapCalloutManager.m */,
+				F37CE92C1CF2D43D00D0457D /* AMapCircle.h */,
+				F37CE92D1CF2D43D00D0457D /* AMapCircle.m */,
+				F37CE92E1CF2D43D00D0457D /* AMapCircleManager.h */,
+				F37CE92F1CF2D43D00D0457D /* AMapCircleManager.m */,
+				F37CE9301CF2D43D00D0457D /* AMapCoordinate.h */,
+				F37CE9311CF2D43D00D0457D /* AMapCoordinate.m */,
+				F37CE9321CF2D43D00D0457D /* AMapManager.h */,
+				F37CE9331CF2D43D00D0457D /* AMapManager.m */,
+				F37CE9341CF2D43D00D0457D /* AMapMarker.h */,
+				F37CE9351CF2D43D00D0457D /* AMapMarker.m */,
+				F37CE9361CF2D43D00D0457D /* AMapMarkerManager.h */,
+				F37CE9371CF2D43D00D0457D /* AMapMarkerManager.m */,
+				F37CE9381CF2D43D00D0457D /* AMapPolygon.h */,
+				F37CE9391CF2D43D00D0457D /* AMapPolygon.m */,
+				F37CE93A1CF2D43D00D0457D /* AMapPolygonManager.h */,
+				F37CE93B1CF2D43D00D0457D /* AMapPolygonManager.m */,
+				F37CE93C1CF2D43D00D0457D /* AMapPolyline.h */,
+				F37CE93D1CF2D43D00D0457D /* AMapPolyline.m */,
+				F37CE93E1CF2D43D00D0457D /* AMapPolylineManager.h */,
+				F37CE93F1CF2D43D00D0457D /* AMapPolylineManager.m */,
+				F30D01F61CDC9653002C929B /* RCTConvert+AMapKit.h */,
+				F30D01F71CDC9653002C929B /* RCTConvert+AMapKit.m */,
+			);
+			path = RCTAMap;
+			sourceTree = "<group>";
+		};
+		F3360C941CDA06A800FD88BC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F30D016C1CDB2DC5002C929B /* Security.framework */,
+				F30D016A1CDB2DBC002C929B /* libc++.tbd */,
+				F30D01681CDB2DAC002C929B /* libstdc++.6.0.9.tbd */,
+				F30D01661CDB2D98002C929B /* libz.tbd */,
+				F30D01641CDB2D84002C929B /* CoreTelephony.framework */,
+				F30D01621CDB2D77002C929B /* CoreLocation.framework */,
+				F30D01601CDB2D62002C929B /* QuartzCore.framework */,
+				F30D015E1CDB2D54002C929B /* CoreGraphics.framework */,
+				F30D015C1CDB2D47002C929B /* Foundation.framework */,
+				F30D015A1CDB2D3A002C929B /* UIKit.framework */,
+				F3360C971CDA090B00FD88BC /* AMapSearchKit.framework */,
+				F3360C951CDA075500FD88BC /* MAMapKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F37CE9221CF2D31A00D0457D /* Callout */ = {
+			isa = PBXGroup;
+			children = (
+				F37CE9231CF2D3BC00D0457D /* SMCalloutView.h */,
+				F37CE9241CF2D3BC00D0457D /* SMCalloutView.m */,
+			);
+			name = Callout;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F3360C811CDA051D00FD88BC /* RCTAMap */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F3360C8B1CDA051D00FD88BC /* Build configuration list for PBXNativeTarget "RCTAMap" */;
+			buildPhases = (
+				F3360C7E1CDA051D00FD88BC /* Sources */,
+				F3360C7F1CDA051D00FD88BC /* Frameworks */,
+				F3360C801CDA051D00FD88BC /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RCTAMap;
+			productName = RCTAMap;
+			productReference = F3360C821CDA051D00FD88BC /* libRCTAMap.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F3360C7A1CDA051D00FD88BC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = dianowba;
+				TargetAttributes = {
+					F3360C811CDA051D00FD88BC = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+				};
+			};
+			buildConfigurationList = F3360C7D1CDA051D00FD88BC /* Build configuration list for PBXProject "RCTAMap" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = F3360C791CDA051D00FD88BC;
+			productRefGroup = F3360C831CDA051D00FD88BC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F3360C811CDA051D00FD88BC /* RCTAMap */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F3360C7E1CDA051D00FD88BC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F37CE94E1CF2D43D00D0457D /* AMapPolygon.m in Sources */,
+				F37CE9501CF2D43D00D0457D /* AMapPolyline.m in Sources */,
+				F37CE9511CF2D43D00D0457D /* AMapPolylineManager.m in Sources */,
+				F37CE94F1CF2D43D00D0457D /* AMapPolygonManager.m in Sources */,
+				F37CE9471CF2D43D00D0457D /* AMapCalloutManager.m in Sources */,
+				F37CE94B1CF2D43D00D0457D /* AMapManager.m in Sources */,
+				F30D01F81CDC9653002C929B /* RCTConvert+AMapKit.m in Sources */,
+				F37CE94D1CF2D43D00D0457D /* AMapMarkerManager.m in Sources */,
+				F37CE9491CF2D43D00D0457D /* AMapCircleManager.m in Sources */,
+				F37CE9251CF2D3BC00D0457D /* SMCalloutView.m in Sources */,
+				F37CE94C1CF2D43D00D0457D /* AMapMarker.m in Sources */,
+				F37CE9461CF2D43D00D0457D /* AMapCallout.m in Sources */,
+				F37CE94A1CF2D43D00D0457D /* AMapCoordinate.m in Sources */,
+				F37CE9481CF2D43D00D0457D /* AMapCircle.m in Sources */,
+				F37CE9451CF2D43D00D0457D /* AMap.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		F3360C891CDA051D00FD88BC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		F3360C8A1CDA051D00FD88BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F3360C8C1CDA051D00FD88BC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../node_modules/react-native/React/**",
+					"$(SRCROOT)/../node_modules/react-native/Libraries/**",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		F3360C8D1CDA051D00FD88BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../node_modules/react-native/React/**",
+					"$(SRCROOT)/../node_modules/react-native/Libraries/**",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F3360C7D1CDA051D00FD88BC /* Build configuration list for PBXProject "RCTAMap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F3360C891CDA051D00FD88BC /* Debug */,
+				F3360C8A1CDA051D00FD88BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F3360C8B1CDA051D00FD88BC /* Build configuration list for PBXNativeTarget "RCTAMap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F3360C8C1CDA051D00FD88BC /* Debug */,
+				F3360C8D1CDA051D00FD88BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F3360C7A1CDA051D00FD88BC /* Project object */;
+}

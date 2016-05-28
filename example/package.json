@@ -1,0 +1,16 @@
+{
+  "name": "example",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node_modules/react-native/packager/packager.sh"
+  },
+  "dependencies": {
+    "react": "^0.14.8",
+    "react-native": "^0.24.1",
+    "react-native-amap": "0.0.3",
+    "react-native-amap-view": "file:../",
+    "react-native-baidu-map": "0.0.1",
+    "react-native-mapbox-gl": "^4.1.1"
+  }
+}
