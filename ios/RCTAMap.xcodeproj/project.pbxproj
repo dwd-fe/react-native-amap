@@ -25,13 +25,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		F3360C801CDA051D00FD88BC /* CopyFiles */ = {
+		F3360C801CDA051D00FD88BC /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
 			);
+			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -183,7 +184,7 @@
 			buildPhases = (
 				F3360C7E1CDA051D00FD88BC /* Sources */,
 				F3360C7F1CDA051D00FD88BC /* Frameworks */,
-				F3360C801CDA051D00FD88BC /* CopyFiles */,
+				F3360C801CDA051D00FD88BC /* Copy Files */,
 			);
 			buildRules = (
 			);
@@ -339,8 +340,10 @@
 					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../../react-native/React/**",
 					"$(SRCROOT)/../node_modules/react-native/React/**",
-					"$(SRCROOT)/../node_modules/react-native/Libraries/**",
+					"$(SRCROOT)/../../react-native/Libraries/Image/**",
+					"$(SRCROOT)/../node_modules/react-native/Libraries/Image/**",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -356,8 +359,10 @@
 					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../../react-native/React/**",
 					"$(SRCROOT)/../node_modules/react-native/React/**",
-					"$(SRCROOT)/../node_modules/react-native/Libraries/**",
+					"$(SRCROOT)/../../react-native/Libraries/Image/**",
+					"$(SRCROOT)/../node_modules/react-native/Libraries/Image/**",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
