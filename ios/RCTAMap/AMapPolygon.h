@@ -33,7 +33,7 @@
 @property (nonatomic, assign) CGFloat lineDashPhase;
 @property (nonatomic, strong) NSArray <NSNumber *> *lineDashPattern;
 
-#pragma mark MKOverlay protocol
+#pragma mark MAOverlay protocol
 
 @property(nonatomic, readonly) CLLocationCoordinate2D coordinate;
 @property(nonatomic, readonly) MAMapRect boundingMapRect;

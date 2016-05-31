@@ -86,8 +86,8 @@
     } else {
         // If it has subviews, it means we are wanting to render a custom marker with arbitrary react views.
         // if it has a non-null image, it means we want to render a custom marker with the image.
-        // In either case, we want to return the AIRMapMarker since it is both an MKAnnotation and an
-        // MKAnnotationView all at the same time.
+        // In either case, we want to return the AMapMarker since it is both an MAAnnotation and an
+        // MAAnnotationView all at the same time.
         return self;
     }
 }
@@ -96,7 +96,7 @@
 {
     // Set everything necessary on the calloutView before it becomes visible.
 
-    // Apply the MKAnnotationView's desired calloutOffset (from the top-middle of the view)
+    // Apply the MAAnnotationView's desired calloutOffset (from the top-middle of the view)
     if ([self shouldUsePinView] && !_hasSetCalloutOffset) {
         calloutView.calloutOffset = CGPointMake(-8,0);
     } else {
@@ -133,7 +133,7 @@
 
 - (void)showCalloutView
 {
-    MKAnnotationView *annotationView = [self getAnnotationView];
+    MAAnnotationView *annotationView = [self getAnnotationView];
 
     [self setSelected:YES animated:NO];
 

@@ -69,8 +69,8 @@
 - (void) createCircleAndRendererIfPossible
 {
     if (!_centerSet || !_radiusSet) return;
-    self.circle = [MKCircle circleWithCenterCoordinate:_centerCoordinate radius:_radius];
-    self.renderer = [[MKCircleRenderer alloc] initWithCircle:self.circle];
+    self.circle = [MACircle circleWithCenterCoordinate:_centerCoordinate radius:_radius];
+    self.renderer = [[MACircleRenderer alloc] initWithCircle:self.circle];
 }
 
 - (void) update
@@ -91,7 +91,7 @@
 }
 
 
-#pragma mark MKOverlay implementation
+#pragma mark MAOverlay implementation
 
 - (CLLocationCoordinate2D) coordinate
 {

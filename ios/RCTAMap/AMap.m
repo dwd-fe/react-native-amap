@@ -26,7 +26,7 @@ const CGFloat AMapZoomBoundBuffer = 0.01;
 
 //@interface RCTView (UIGestureRecognizer)
 //
-//// this tells the compiler that MKMapView actually implements this method
+//// this tells the compiler that MAMapView actually implements this method
 //- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch;
 //
 //@end
@@ -48,7 +48,7 @@ const CGFloat AMapZoomBoundBuffer = 0.01;
     // Implementation based on RCTTextField, another component with indirect children
     // https://github.com/facebook/react-native/blob/v0.16.0/Libraries/Text/RCTTextField.m#L20
     NSMutableArray<UIView *> *_reactSubviews;
-    
+
 }
 
 - (instancetype)init
@@ -56,7 +56,7 @@ const CGFloat AMapZoomBoundBuffer = 0.01;
     if (self = [super init]) {
         _hasStartedRendering = NO;
         _reactSubviews = [NSMutableArray new];
-        
+
         for (UIView *subView in self.subviews) {
             if ([NSStringFromClass(subView.class) isEqualToString:@"MAAttributionLabel"]) {
                 // This check is super hacky, but the whole premise of moving around
@@ -68,7 +68,7 @@ const CGFloat AMapZoomBoundBuffer = 0.01;
         self.calloutView = [SMCalloutView platformCalloutView];
         self.calloutView.delegate = self;
     }
-    
+
     return self;
 }
 
@@ -83,12 +83,12 @@ const CGFloat AMapZoomBoundBuffer = 0.01;
         self.mapView.showsCompass = _showsCompass;
         self.mapView.showTraffic = _showsTraffic;
         if(self.mapView.zoomLevel != _zoomLevel) self.mapView.zoomLevel = _zoomLevel;
-        
+
         if (!_initialRegionSet) {
             _initialRegionSet = YES;
             [self setRegion:_initialRegion animated:YES];
         }
-        
+
         self.mapView.zoomEnabled = _zoomEnabled;
         self.mapView.showsUserLocation = _showsUserLocation;
         self.mapView.mapType = _mapType;
@@ -103,22 +103,22 @@ const CGFloat AMapZoomBoundBuffer = 0.01;
 - (void) createMap {
     [MAMapServices sharedServices].apiKey = _apiKey;
     _mapView = [[MAMapView alloc] initWithFrame:self.bounds];
-    
+
     // MAMapView doesn't report tap events, so we attach gesture recognizers to it
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleMapTap:)];
     tap.delegate = self;
     //setting this to NO allows the parent MapView to continue receiving marker selection events
     tap.cancelsTouchesInView = NO;
-    
+
     UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleMapLongPress:)];
     longPress.delegate = self;
     longPress.cancelsTouchesInView = NO;
     longPress.numberOfTouchesRequired = 1;
-    
+
     [self addGestureRecognizer:tap];
     [self addGestureRecognizer:longPress];
     _mapView.delegate = self;
-    
+
     [self updateMap];
     [self mapDidReady];
     [self addSubview:_mapView];
@@ -217,7 +217,7 @@ const CGFloat AMapZoomBoundBuffer = 0.01;
     // move the map!
     [_mapView setCenterCoordinate:coordinate animated:YES];
 
-    // tell the callout to wait for a while while we scroll (we assume the scroll delay for MKMapView matches UIScrollView)
+    // tell the callout to wait for a while while we scroll (we assume the scroll delay for MAMapView matches UIScrollView)
     return kSMCalloutViewRepositionDelayForUIScrollView;
 }
 
@@ -260,7 +260,7 @@ const CGFloat AMapZoomBoundBuffer = 0.01;
     if (![marker isKindOfClass:[AMapMarker class]]) {
         return nil;
     }
-    
+
     marker.map = self;
     return [marker getAnnotationView];
 }
@@ -274,9 +274,9 @@ didChangeDragState:(MAAnnotationViewDragState)newState
 {
     if (![view.annotation isKindOfClass:[AMapMarker class]]) return;
     AMapMarker *marker = (AMapMarker *)view.annotation;
-    
+
     BOOL isPinView = [view isKindOfClass:[MAPinAnnotationView class]];
-    
+
     id event = @{
                  @"id": marker.identifier ?: @"unknown",
                  @"coordinate": @{
@@ -284,19 +284,19 @@ didChangeDragState:(MAAnnotationViewDragState)newState
                          @"longitude": @(marker.coordinate.longitude)
                          }
                  };
-    
+
     if (newState == MAAnnotationViewDragStateEnding || newState == MAAnnotationViewDragStateCanceling) {
         if (!isPinView) {
             [view setDragState:MAAnnotationViewDragStateNone animated:NO];
         }
         if (self.onMarkerDragEnd) self.onMarkerDragEnd(event);
         if (marker.onDragEnd) marker.onDragEnd(event);
-        
+
         [view removeObserver:self forKeyPath:@"center"];
     } else if (newState == MAAnnotationViewDragStateStarting) {
         // MapKit doesn't emit continuous drag events. To get around this, we are going to use KVO.
         [view addObserver:self forKeyPath:@"center" options:NSKeyValueObservingOptionNew context:&kDragCenterContext];
-        
+
         if (self.onMarkerDragStart) self.onMarkerDragStart(event);
         if (marker.onDragStart) marker.onDragStart(event);
     }
@@ -310,18 +310,18 @@ didChangeDragState:(MAAnnotationViewDragState)newState
     if ([keyPath isEqualToString:@"center"] && [object isKindOfClass:[MAAnnotationView class]]) {
         MAAnnotationView *view = (MAAnnotationView *)object;
         AMapMarker *marker = (AMapMarker *)view.annotation;
-        
+
         // a marker we don't control might be getting dragged. Check just in case.
         if (!marker) return;
-        
+
         AMap *map = marker.map;
-        
+
         // don't waste time calculating if there are no events to listen to it
         if (!map.onMarkerDrag && !marker.onDrag) return;
-        
+
         CGPoint position = CGPointMake(view.center.x - view.centerOffset.x, view.center.y - view.centerOffset.y);
         CLLocationCoordinate2D coordinate = [map.mapView convertPoint:position toCoordinateFromView:map];
-        
+
         id event = @{
                      @"id": marker.identifier ?: @"unknown",
                      @"position": @{
@@ -333,10 +333,10 @@ didChangeDragState:(MAAnnotationViewDragState)newState
                              @"longitude": @(coordinate.longitude),
                              }
                      };
-        
+
         if (map.onMarkerDrag) map.onMarkerDrag(event);
         if (marker.onDrag) marker.onDrag(event);
-        
+
     } else {
         // This message is not for me; pass it on to super.
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
@@ -351,7 +351,7 @@ didChangeDragState:(MAAnnotationViewDragState)newState
         region.span.longitudeDelta = AMapDefaultSpan;
         region.center = location.coordinate;
         [mapView setRegion:region animated:YES];
-        
+
         // Move to user location only for the first time it loads up.
         mapView.showsUserLocation = NO;
     }
@@ -360,13 +360,13 @@ didChangeDragState:(MAAnnotationViewDragState)newState
 - (void)mapView:(MAMapView *)mapView regionWillChangeAnimated:(__unused BOOL)animated
 {
     [self _regionChanged:mapView];
-    
+
     self.regionChangeObserveTimer = [NSTimer timerWithTimeInterval:AMapRegionChangeObserveInterval
                                                                target:self
                                                              selector:@selector(_onTick:)
                                                              userInfo:@{ RCTMapViewKey: mapView }
                                                               repeats:YES];
-    
+
     [[NSRunLoop mainRunLoop] addTimer:self.regionChangeObserveTimer forMode:NSRunLoopCommonModes];
 }
 
@@ -374,15 +374,15 @@ didChangeDragState:(MAAnnotationViewDragState)newState
 {
     [self.regionChangeObserveTimer invalidate];
     self.regionChangeObserveTimer = nil;
-    
+
     [self _regionChanged:mapView];
-    
+
     // Don't send region did change events until map has
     // started rendering, as these won't represent the final location
     if (self.hasStartedRendering) {
         [self _emitRegionChangeEvent:mapView continuous:NO];
     };
-    
+
     self.pendingCenter = mapView.region.center;
     self.pendingSpan = mapView.region.span;
 }
@@ -406,13 +406,13 @@ didChangeDragState:(MAAnnotationViewDragState)newState
     BOOL needZoom = NO;
     CGFloat newLongitudeDelta = 0.0f;
     MACoordinateRegion region = mapView.region;
-    
+
     // On iOS 7, it's possible that we observe invalid locations during
     // initialization of the map. Filter those out.
     if (!CLLocationCoordinate2DIsValid(region.center)) {
         return;
     }
-    
+
     // Calculation on float is not 100% accurate. If user zoom to max/min and then
     // move, it's likely the map will auto zoom to max/min from time to time.
     // So let's try to make map zoom back to 99% max or 101% min so that there is
@@ -432,7 +432,7 @@ didChangeDragState:(MAAnnotationViewDragState)newState
         region.span.longitudeDelta = newLongitudeDelta;
         mapView.region = region;
     }
-    
+
     // Continously observe region changes
     [self _emitRegionChangeEvent:mapView continuous:YES];
 }
@@ -444,7 +444,7 @@ didChangeDragState:(MAAnnotationViewDragState)newState
         if (!CLLocationCoordinate2DIsValid(region.center)) {
             return;
         }
-        
+
         self.onChange(@{
                            @"continuous": @(continuous),
                            @"region": @{
@@ -475,10 +475,10 @@ didChangeDragState:(MAAnnotationViewDragState)newState
 - (void)handleMapTap:(UITapGestureRecognizer *)recognizer {
     AMap *map = (AMap *)recognizer.view;
     if (!map.onPress) return;
-    
+
     CGPoint touchPoint = [recognizer locationInView:map];
     CLLocationCoordinate2D coord = [map.mapView convertPoint:touchPoint toCoordinateFromView:map];
-    
+
     map.onPress(@{
                   @"coordinate": @{
                           @"latitude": @(coord.latitude),
@@ -489,7 +489,7 @@ didChangeDragState:(MAAnnotationViewDragState)newState
                           @"y": @(touchPoint.y),
                           },
                   });
-    
+
 }
 
 - (void)handleMapLongPress:(UILongPressGestureRecognizer *)recognizer {
@@ -497,10 +497,10 @@ didChangeDragState:(MAAnnotationViewDragState)newState
     if (recognizer.state != UIGestureRecognizerStateBegan) return;
     AMap *map = (AMap *)recognizer.view;
     if (!map.onLongPress) return;
-    
+
     CGPoint touchPoint = [recognizer locationInView:map];
     CLLocationCoordinate2D coord = [map.mapView convertPoint:touchPoint toCoordinateFromView:map];
-    
+
     map.onLongPress(@{
                       @"coordinate": @{
                               @"latitude": @(coord.latitude),
@@ -543,7 +543,7 @@ MAP_PROP_UPDATE(MAMapType, mapType);
     if (!CLLocationCoordinate2DIsValid(region.center)) {
         return;
     }
-    
+
 
     // If new span values are nil, use old values instead
     if (!region.span.latitudeDelta) {

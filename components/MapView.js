@@ -26,7 +26,7 @@ var MapView = React.createClass({
   mixins: [NativeMethodsMixin],
 
   viewConfig: {
-    uiViewClassName: 'AIRMap',
+    uiViewClassName: 'AMap',
     validAttributes: {
       region: true,
     },

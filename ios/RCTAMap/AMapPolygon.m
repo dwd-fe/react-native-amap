@@ -58,10 +58,10 @@
     {
         coords[i] = coordinates[i].coordinate;
     }
-    self.polygon = [MKPolygon polygonWithCoordinates:coords count:coordinates.count];
+    self.polygon = [MAPolygon polygonWithCoordinates:coords count:coordinates.count];
     // TODO: we could lazy-initialize the polygon, since we don't need it until the
     // polygon is in view.
-    self.renderer = [[MKPolygonRenderer alloc] initWithPolygon:self.polygon];
+    self.renderer = [[MAPolygonRenderer alloc] initWithPolygon:self.polygon];
     [self update];
 }
 
@@ -82,7 +82,7 @@
     [_map.mapView addOverlay:self];
 }
 
-#pragma mark MKOverlay implementation
+#pragma mark MAOverlay implementation
 
 - (CLLocationCoordinate2D) coordinate
 {

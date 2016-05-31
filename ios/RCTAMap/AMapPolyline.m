@@ -58,8 +58,8 @@
     {
         coords[i] = coordinates[i].coordinate;
     }
-    self.polyline = [MKPolyline polylineWithCoordinates:coords count:coordinates.count];
-    self.renderer = [[MKPolylineRenderer alloc] initWithPolyline:self.polyline];
+    self.polyline = [MAPolyline polylineWithCoordinates:coords count:coordinates.count];
+    self.renderer = [[MAPolylineRenderer alloc] initWithPolyline:self.polyline];
     [self update];
 }
 
@@ -81,7 +81,7 @@
 }
 
 
-#pragma mark MKOverlay implementation
+#pragma mark MAOverlay implementation
 
 - (CLLocationCoordinate2D) coordinate
 {

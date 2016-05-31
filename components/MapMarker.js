@@ -223,14 +223,14 @@ var MapMarker = React.createClass({
       case 'android':
         NativeModules.UIManager.dispatchViewManagerCommand(
           this._getHandle(),
-          NativeModules.UIManager.AIRMapMarker.Commands[name],
+          NativeModules.UIManager.AMapMarker.Commands[name],
           args
         );
         break;
 
       case 'ios':
-        NativeModules.AIRMapMarkerManager[name].apply(
-          NativeModules.AIRMapMarkerManager[name],
+        NativeModules.AMapMarkerManager[name].apply(
+          NativeModules.AMapMarkerManager[name],
           [this._getHandle(), ...args]
         );
         break;
