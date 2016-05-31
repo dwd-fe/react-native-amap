@@ -128,6 +128,9 @@ const CGFloat AMapZoomBoundBuffer = 0.01;
     if (self.onMapReady) {
         self.onMapReady(@{});
     }
+    for (UIView* subview in _reactSubviews) {
+        [self insetAnnotation:subview];
+    }
 }
 
 - (void) layoutSubviews {
@@ -136,9 +139,8 @@ const CGFloat AMapZoomBoundBuffer = 0.01;
     [_mapView setFrame:self.bounds];
 }
 
-- (void)insertReactSubview:(id<RCTComponent>)subview atIndex:(NSInteger)atIndex {
-    // Our desired API is to pass up markers/overlays as children to the mapview component.
-    // This is where we intercept them and do the appropriate underlying mapview action.
+- (void) insetAnnotation:(UIView*)subview
+{
     if ([subview isKindOfClass:[AMapMarker class]]) {
         [_mapView addAnnotation:(id <MAAnnotation>) subview];
     } else if ([subview isKindOfClass:[AMapPolyline class]]) {
@@ -149,6 +151,15 @@ const CGFloat AMapZoomBoundBuffer = 0.01;
         [_mapView addOverlay:(id<MAOverlay>)subview];
     } else if ([subview isKindOfClass:[AMapCircle class]]) {
         [_mapView addOverlay:(id<MAOverlay>)subview];
+    }
+}
+
+- (void)insertReactSubview:(id<RCTComponent>)subview atIndex:(NSInteger)atIndex {
+    // Our desired API is to pass up markers/overlays as children to the mapview component.
+    // This is where we intercept them and do the appropriate underlying mapview action.
+    // If _mapView is not ready, just push to _reactSubViews;
+    if (_mapView) {
+        [self insetAnnotation:subview];
     }
     [_reactSubviews insertObject:(UIView *)subview atIndex:(NSUInteger) atIndex];
 }

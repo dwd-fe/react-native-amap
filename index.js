@@ -1,3 +1,3 @@
-import MapView from './components/MapView'
+var MapView = require('./components/MapView');
 
-export default MapView
+module.exports = MapView;

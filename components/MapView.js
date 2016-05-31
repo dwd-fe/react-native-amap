@@ -384,11 +384,10 @@ var MapView = React.createClass({
   },
 
   _getHandle() {
-      return React.findNodeHandle(this.refs.map);
+      return ReactNative.findNodeHandle(this.refs.map);
   },
 
   _runCommand(name, args) {
-      console.log(NativeModules.UIManager.AMap.Commands[name]);
       switch (Platform.OS) {
           case 'android':
               NativeModules.UIManager.dispatchViewManagerCommand(

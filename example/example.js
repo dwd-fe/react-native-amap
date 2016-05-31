@@ -17,7 +17,7 @@ import React, {
 } from 'react-native';
 // import Mapbox from 'react-native-mapbox-gl'
 import AMapView from 'react-native-amap-view'
-console.log(AMapView.AMapManager);
+console.log(AMapView);
 
 class Example extends Component {
 
@@ -40,6 +40,7 @@ class Example extends Component {
         </View>
             <AMapView onPress={(e)=>console.log("Map::onPress", e.nativeEvent)} onLongPress={()=>console.log(arguments)} ref="map" initialRegion={{latitude:39.001, longitude:116.002}} apiKey="d7281b2a331af8dbb6b76a2e9c3629df"
                 showsUserLocation={true} showsCompass={true} zoomEnabled={true}  showsScale={true} showsTraffic={true} >
+                <AMapView.Marker coordinate={{latitude:39.001, longitude:116.002}} />
             </AMapView>
       </View>
     );
