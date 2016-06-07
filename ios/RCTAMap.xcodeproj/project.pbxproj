@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F30D01F81CDC9653002C929B /* RCTConvert+AMapKit.m in Sources */ = {isa = PBXBuildFile; fileRef = F30D01F71CDC9653002C929B /* RCTConvert+AMapKit.m */; };
+		F33D0C441CFED6B000F64130 /* AMapSearchManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F33D0C431CFED6B000F64130 /* AMapSearchManager.m */; };
 		F37CE9251CF2D3BC00D0457D /* SMCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = F37CE9241CF2D3BC00D0457D /* SMCalloutView.m */; };
 		F37CE9451CF2D43D00D0457D /* AMap.m in Sources */ = {isa = PBXBuildFile; fileRef = F37CE9271CF2D43D00D0457D /* AMap.m */; };
 		F37CE9461CF2D43D00D0457D /* AMapCallout.m in Sources */ = {isa = PBXBuildFile; fileRef = F37CE9291CF2D43D00D0457D /* AMapCallout.m */; };
@@ -51,8 +52,10 @@
 		F30D01F61CDC9653002C929B /* RCTConvert+AMapKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RCTConvert+AMapKit.h"; sourceTree = "<group>"; };
 		F30D01F71CDC9653002C929B /* RCTConvert+AMapKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RCTConvert+AMapKit.m"; sourceTree = "<group>"; };
 		F3360C821CDA051D00FD88BC /* libRCTAMap.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRCTAMap.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		F3360C951CDA075500FD88BC /* MAMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MAMapKit.framework; path = ../../../../../../../Downloads/MAMapKit.framework; sourceTree = "<group>"; };
-		F3360C971CDA090B00FD88BC /* AMapSearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AMapSearchKit.framework; path = ../../../../../../../Downloads/AMapSearchKit.framework; sourceTree = "<group>"; };
+		F33D0C421CFED5F300F64130 /* AMapSearchManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMapSearchManager.h; sourceTree = "<group>"; };
+		F33D0C431CFED6B000F64130 /* AMapSearchManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMapSearchManager.m; sourceTree = "<group>"; };
+		F33D0C451CFEDA3D00F64130 /* AMapSearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapSearchKit.framework; sourceTree = "<group>"; };
+		F33D0C4A1D0698A500F64130 /* MAMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MAMapKit.framework; sourceTree = "<group>"; };
 		F37CE9231CF2D3BC00D0457D /* SMCalloutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMCalloutView.h; path = Callout/SMCalloutView.h; sourceTree = "<group>"; };
 		F37CE9241CF2D3BC00D0457D /* SMCalloutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMCalloutView.m; path = Callout/SMCalloutView.m; sourceTree = "<group>"; };
 		F37CE9261CF2D43D00D0457D /* AMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMap.h; sourceTree = "<group>"; };
@@ -114,6 +117,7 @@
 		F3360C841CDA051D00FD88BC /* RCTAMap */ = {
 			isa = PBXGroup;
 			children = (
+				F33D0C3D1CFED4CE00F64130 /* Search */,
 				F37CE9221CF2D31A00D0457D /* Callout */,
 				F37CE9261CF2D43D00D0457D /* AMap.h */,
 				F37CE9271CF2D43D00D0457D /* AMap.m */,
@@ -150,6 +154,8 @@
 		F3360C941CDA06A800FD88BC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F33D0C4A1D0698A500F64130 /* MAMapKit.framework */,
+				F33D0C451CFEDA3D00F64130 /* AMapSearchKit.framework */,
 				F30D016C1CDB2DC5002C929B /* Security.framework */,
 				F30D016A1CDB2DBC002C929B /* libc++.tbd */,
 				F30D01681CDB2DAC002C929B /* libstdc++.6.0.9.tbd */,
@@ -160,10 +166,17 @@
 				F30D015E1CDB2D54002C929B /* CoreGraphics.framework */,
 				F30D015C1CDB2D47002C929B /* Foundation.framework */,
 				F30D015A1CDB2D3A002C929B /* UIKit.framework */,
-				F3360C971CDA090B00FD88BC /* AMapSearchKit.framework */,
-				F3360C951CDA075500FD88BC /* MAMapKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F33D0C3D1CFED4CE00F64130 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				F33D0C421CFED5F300F64130 /* AMapSearchManager.h */,
+				F33D0C431CFED6B000F64130 /* AMapSearchManager.m */,
+			);
+			name = Search;
 			sourceTree = "<group>";
 		};
 		F37CE9221CF2D31A00D0457D /* Callout */ = {
@@ -245,6 +258,7 @@
 				F37CE9461CF2D43D00D0457D /* AMapCallout.m in Sources */,
 				F37CE94A1CF2D43D00D0457D /* AMapCoordinate.m in Sources */,
 				F37CE9481CF2D43D00D0457D /* AMapCircle.m in Sources */,
+				F33D0C441CFED6B000F64130 /* AMapSearchManager.m in Sources */,
 				F37CE9451CF2D43D00D0457D /* AMap.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -288,7 +302,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -325,7 +339,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

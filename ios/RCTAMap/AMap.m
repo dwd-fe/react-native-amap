@@ -7,6 +7,8 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
+#import <AMapSearchKit/AMapSearchKit.h>
+
 #import "AMap.h"
 
 #import "RCTEventDispatcher.h"
@@ -102,6 +104,7 @@ const CGFloat AMapZoomBoundBuffer = 0.01;
 
 - (void) createMap {
     [MAMapServices sharedServices].apiKey = _apiKey;
+    [AMapSearchServices sharedServices].apiKey = _apiKey;
     _mapView = [[MAMapView alloc] initWithFrame:self.bounds];
 
     // MAMapView doesn't report tap events, so we attach gesture recognizers to it

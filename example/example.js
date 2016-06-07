@@ -20,20 +20,21 @@ import AMapView from 'react-native-amap-view'
 console.log(AMapView);
 
 class Example extends Component {
-
   componentDidMount() {
-        // console.log(this.refs.map)
         setTimeout(()=>{
             this.refs.map.animateToZoomLevel(10)
+            AMapView.Search.AMapInputTipsSearch("肯德基","杭州").then((a)=>{
+                console.log(a);
+            })
+            AMapView.Search.AMapWeatherSearch("下城区", true).then((a)=>console.log(a))
+            AMapView.Search.AMapWeatherSearch("下城区", false).then((a)=>console.log(a))
         }, 3000)
-
     }
   render() {
     var {height, width} = Dimensions.get('window')
     console.log('render。。。');
     return (
       <View style={styles.container}>
-
         <View style={{flex:1}}>
                 <Text>hello
                 </Text>

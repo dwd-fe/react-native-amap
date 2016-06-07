@@ -23,8 +23,6 @@
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		F30D01431CDB2422002C929B /* libRCTAMap.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F3360C931CDA05C700FD88BC /* libRCTAMap.a */; };
-		F30D017F1CDB31CD002C929B /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F30D017E1CDB31CD002C929B /* MAMapKit.framework */; };
-		F30D01811CDB31FF002C929B /* AMapSearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F30D01801CDB31FF002C929B /* AMapSearchKit.framework */; };
 		F30D01831CDB3243002C929B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F30D01821CDB3243002C929B /* UIKit.framework */; };
 		F30D01851CDB324D002C929B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F30D01841CDB324D002C929B /* Foundation.framework */; };
 		F30D01871CDB3259002C929B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F30D01861CDB3259002C929B /* CoreGraphics.framework */; };
@@ -35,6 +33,8 @@
 		F30D01911CDB3299002C929B /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F30D01901CDB3299002C929B /* libstdc++.6.0.9.tbd */; };
 		F30D01971CDB3C85002C929B /* AMap.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F30D01961CDB3C85002C929B /* AMap.bundle */; };
 		F31D77151CEC5EC00000D07D /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F30D01921CDB32A1002C929B /* libc++.tbd */; };
+		F33D0C561D06A0D900F64130 /* AMapSearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F30D01801CDB31FF002C929B /* AMapSearchKit.framework */; };
+		F33D0C571D06A0DE00F64130 /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F30D017E1CDB31CD002C929B /* MAMapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -161,6 +161,7 @@
 		F30D01961CDB3C85002C929B /* AMap.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = AMap.bundle; path = MAMapKit.framework/AMap.bundle; sourceTree = "<group>"; };
 		F31D77131CEC5E990000D07D /* libdyld.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libdyld.tbd; path = usr/lib/system/libdyld.tbd; sourceTree = SDKROOT; };
 		F3360C8E1CDA05C700FD88BC /* RCTAMap.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAMap.xcodeproj; path = ../../ios/RCTAMap.xcodeproj; sourceTree = "<group>"; };
+		F33D0C301CFED27D00F64130 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +176,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F30D01851CDB324D002C929B /* Foundation.framework in Frameworks */,
 				F31D77151CEC5EC00000D07D /* libc++.tbd in Frameworks */,
 				F30D01911CDB3299002C929B /* libstdc++.6.0.9.tbd in Frameworks */,
 				F30D018F1CDB328C002C929B /* libz.tbd in Frameworks */,
@@ -182,21 +184,20 @@
 				F30D018B1CDB3278002C929B /* CoreTelephony.framework in Frameworks */,
 				F30D01891CDB3262002C929B /* QuartzCore.framework in Frameworks */,
 				F30D01871CDB3259002C929B /* CoreGraphics.framework in Frameworks */,
-				F30D01851CDB324D002C929B /* Foundation.framework in Frameworks */,
 				F30D01831CDB3243002C929B /* UIKit.framework in Frameworks */,
 				F30D01431CDB2422002C929B /* libRCTAMap.a in Frameworks */,
-				F30D017F1CDB31CD002C929B /* MAMapKit.framework in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
 				00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */,
 				00C302E81ABCBA2D00DB3ED1 /* libRCTImage.a in Frameworks */,
 				133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */,
-				F30D01811CDB31FF002C929B /* AMapSearchKit.framework in Frameworks */,
 				00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */,
 				139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */,
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
+				F33D0C571D06A0DE00F64130 /* MAMapKit.framework in Frameworks */,
+				F33D0C561D06A0D900F64130 /* AMapSearchKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +359,7 @@
 		F30D017B1CDB305E002C929B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F33D0C301CFED27D00F64130 /* CoreFoundation.framework */,
 				F31D77131CEC5E990000D07D /* libdyld.tbd */,
 				F30D01941CDB32A9002C929B /* Security.framework */,
 				F30D01921CDB32A1002C929B /* libc++.tbd */,

@@ -9,6 +9,7 @@
 #import "RCTConvert.h"
 #import "AMapCoordinate.h"
 #import <MAMapKit/MAMapKit.h>
+#import <AMapSearchKit/AMapSearchKit.h>
 
 @class MAAnnotation;
 @class MAOverlay;

@@ -318,7 +318,9 @@ var MapView = React.createClass({
           region,
           initialRegion
       } = this.props;
-
+      if (typeof this.props.onMapReady == 'function') {
+          this.props.onMapReady()
+      }
       if (region) {
           this.refs.map.setNativeProps({
               region

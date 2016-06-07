@@ -1,5 +1,6 @@
 package com.dianwoba.rctamap;
 
+import com.dianwoba.rctamap.search.AMapSearchManager;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.JavaScriptModule;
 import com.facebook.react.bridge.NativeModule;
@@ -13,7 +14,11 @@ import java.util.List;
 public class AMapPackage implements ReactPackage {
     @Override
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
-        return Collections.emptyList();
+        AMapSearchManager searchManager = new AMapSearchManager(reactContext);
+
+        return  Arrays.<NativeModule>asList(
+                searchManager
+        );
     }
 
     @Override
@@ -28,7 +33,6 @@ public class AMapPackage implements ReactPackage {
         AMapPolylineManager polylineManager = new AMapPolylineManager(reactContext);
         AMapPolygonManager polygonManager = new AMapPolygonManager(reactContext);
         AMapCircleManager circleManager = new AMapCircleManager(reactContext);
-        RCTAMapViewManager rctaMapViewManager = new RCTAMapViewManager();
 
         AMapViewManager mapManager = new AMapViewManager(
                 annotationManager,
@@ -43,8 +47,8 @@ public class AMapPackage implements ReactPackage {
                 polylineManager,
                 polygonManager,
                 circleManager,
-                mapManager,
-                rctaMapViewManager
+                mapManager
         );
     }
+
 }
