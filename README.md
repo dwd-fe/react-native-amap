@@ -5,7 +5,7 @@ React Native AMap component for iOS + Android
 
 ###Demo
 
-![demo-gif](https://raw.githubusercontent.com/dianwoba/react-native-amap/master/docs/assets/demo.gif)
+![demo-gif](https://raw.githubusercontent.com/dianwoba/react-native-amap/master/doc/assets/demo.gif)
 
 ### Installation
 
