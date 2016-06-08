@@ -21,6 +21,7 @@
 + (MAMapType)MAMapType:(id)json;
 + (MAUserTrackingMode)MAUserTrackingMode:(id)json;
 + (AMapCoordinate *) AMapCoordinate:(id)json;
++ (AMapGeoPoint *)AMapGeoPoint:(id)json;
 
 //+ (MAAnnotation *)MAMapAnnotation:(id)json;
 //+ (MAOverlay *)MAMapOverlay:(id)json;

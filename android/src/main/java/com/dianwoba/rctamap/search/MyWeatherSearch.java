@@ -26,7 +26,7 @@ class MyWeatherSearch extends AMapSearch implements WeatherSearch.OnWeatherSearc
     @Override
     public void onWeatherLiveSearched(LocalWeatherLiveResult localWeatherLiveResult, int resultId) {
         if (1000 != resultId) {
-            this.sendEventWithError("request inputTips error");
+            this.sendEventWithError("request weatherLive error");
             return;
         }
 
@@ -52,7 +52,7 @@ class MyWeatherSearch extends AMapSearch implements WeatherSearch.OnWeatherSearc
     @Override
     public void onWeatherForecastSearched(LocalWeatherForecastResult localWeatherForecastResult, int resultId) {
         if (1000 != resultId) {
-            this.sendEventWithError("request inputTips error");
+            this.sendEventWithError("request weatherForecast error");
             return;
         }
 

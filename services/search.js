@@ -24,7 +24,7 @@ const searchRequstFactory = (type) => (...args) => {
             }),
             requestId = requestIdGenerator(type)
 
-        args = [...args, requestId]
+        args = [requestId, ...args]
 
         AMapSearchManager[type].apply(null, args)
         promiseQueue[requestId] = {resolve, reject}
@@ -50,3 +50,5 @@ emitter.addListener(
 
 export const AMapInputTipsSearch = searchRequstFactory('inputTipsSearch')
 export const AMapWeatherSearch = searchRequstFactory('weatherSearch')
+export const AMapGeoCodeSearch = searchRequstFactory('geocodeSearch')
+export const AMapRegeocodeSearch = searchRequstFactory('regeocodeSearch')

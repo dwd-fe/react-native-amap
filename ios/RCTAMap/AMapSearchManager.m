@@ -58,7 +58,7 @@ RCT_EXPORT_MODULE();
 @synthesize bridge = _bridge;
 
 
-RCT_EXPORT_METHOD(inputTipsSearch:(NSString *) keys city:(NSString *)city requestId:(NSString *)requestId)
+RCT_EXPORT_METHOD(inputTipsSearch:(NSString *)requestId keys:(NSString *) keys city:(NSString *)city)
 {
     _tipsRequest = [[AMapInputTipsSearchRequest alloc] init];
 
@@ -68,7 +68,7 @@ RCT_EXPORT_METHOD(inputTipsSearch:(NSString *) keys city:(NSString *)city reques
     [_search AMapInputTipsSearch:_tipsRequest];
 }
 
-RCT_EXPORT_METHOD(weatherSearch:(NSString *)city isLive:(BOOL) isLive requestId:(NSString *)requestId)
+RCT_EXPORT_METHOD(weatherSearch:(NSString *)requestId city:(NSString *)city isLive:(BOOL) isLive)
 {
     AMapWeatherSearchRequest *request = [[AMapWeatherSearchRequest alloc] init];
     request.city = city;
@@ -77,15 +77,37 @@ RCT_EXPORT_METHOD(weatherSearch:(NSString *)city isLive:(BOOL) isLive requestId:
     [_search AMapWeatherSearch:request];
 }
 
+RCT_EXPORT_METHOD(geocodeSearch:(NSString *)requestId address:(NSString *)address city:(NSString *)city)
+{
+    AMapGeocodeSearchRequest *request = [[AMapGeocodeSearchRequest alloc]init];
+    request.address = address;
+    request.city = city;
+    request.requestId = requestId;
+    [_search AMapGeocodeSearch:request];
+}
+
+RCT_EXPORT_METHOD(regeocodeSearch:(NSString *)requestId location:(AMapGeoPoint *)location radius:(NSInteger)radius)
+{
+    AMapReGeocodeSearchRequest *request = [[AMapReGeocodeSearchRequest alloc]init];
+    request.location = location;
+    request.radius = radius? radius: 1000;
+    request.requireExtension = NO;
+    request.requestId = requestId;
+    [_search AMapReGoecodeSearch:request];
+}
+
+
 //实现输入提示的回调函数
 -(void)onInputTipsSearchDone:(AMapInputTipsSearchRequest*)request response:(AMapInputTipsSearchResponse *)response
 {
     //通过AMapInputTipsSearchResponse对象处理搜索结果
     NSMutableArray *arr = [[NSMutableArray alloc] init];
-    for (AMapTip *p in response.tips)
-    {
-        NSDictionary *n = [self amapTipToJson: p];
-        [arr addObject:n];
+    if (response.tips.count != 0) {
+        for (AMapTip *p in response.tips)
+        {
+            NSDictionary *n = [self amapTipToJson: p];
+            [arr addObject:n];
+        }
     }
   
     [self.bridge.eventDispatcher sendAppEventWithName:@"ReceiveAMapSearchResult" body:@{
@@ -108,17 +130,15 @@ RCT_EXPORT_METHOD(weatherSearch:(NSString *)city isLive:(BOOL) isLive requestId:
     //如果是实时天气
     if(request.type == AMapWeatherTypeLive)
     {
-        for (AMapLocalWeatherLive *live in response.lives) {
-            [arr addObject:[self dictionaryWithPropertiesOfObject:live]];
+        if (response.lives.count != 0) {
+            for (AMapLocalWeatherLive *live in response.lives) {
+                [arr addObject:[self dictionaryWithPropertiesOfObject:live]];
+            }
         }
     }
     //如果是预报天气
-    else
+    else if(response.forecasts.count != 0)
     {
-        if(response.forecasts.count == 0)
-        {
-            return;
-        }
         for (AMapLocalWeatherForecast *forecast in response.forecasts) {
             [arr addObject:[self amapLocalWeatherForecastToJson:forecast]];
         }
@@ -144,6 +164,59 @@ RCT_EXPORT_METHOD(weatherSearch:(NSString *)city isLive:(BOOL) isLive requestId:
              };
 }
 
+//接受处理地理编码
+-(void)onGeocodeSearchDone:(AMapGeocodeSearchRequest *)request response:(AMapGeocodeSearchResponse *)response
+{
+    //通过AMapGeocodeSearchResponse对象处理搜索结果
+    NSMutableArray *arr = [[NSMutableArray alloc] init];
+    if(response.geocodes.count != 0)
+    {
+        for (AMapGeocode *gc in response.geocodes)
+        {
+            NSDictionary *n = @{@"formattedAddress": gc.formattedAddress,
+                                @"province": gc.province,
+                                @"city": gc.city,
+                                @"cityCode": gc.citycode,
+                                @"district": gc.district,
+                                @"township": gc.township,
+                                @"neighborhood": gc.neighborhood,
+                                @"building": gc.building,
+                                @"adcode": gc.adcode,
+                                @"location": @{@"latitude": @(gc.location.latitude), @"longitude": @(gc.location.longitude)},
+                                @"level": gc.level
+                                };
+            [arr addObject:n];
+        }
+    }
+    
+    [self.bridge.eventDispatcher sendAppEventWithName:@"ReceiveAMapSearchResult" body:@{
+                                                                                        @"requestId":request.requestId, @"data":arr}];
+}
+
+//接收处理 逆地址编码
+-(void)onReGeocodeSearchDone:(AMapReGeocodeSearchRequest *)request response:(AMapReGeocodeSearchResponse *)response
+{
+    NSMutableArray *arr = [[NSMutableArray alloc] init];
+    if(response.regeocode != nil)
+    {
+        //通过AMapReGeocodeSearchResponse对象处理搜索结果
+        NSDictionary *n = @{
+                            @"formattedAddress":response.regeocode.formattedAddress,
+                            @"province": response.regeocode.addressComponent.province,
+                            @"city": response.regeocode.addressComponent.city,
+                            @"cityCode": response.regeocode.addressComponent.citycode,
+                            @"township": response.regeocode.addressComponent.township,
+                            @"neighborhood": response.regeocode.addressComponent.neighborhood,
+                            @"building": response.regeocode.addressComponent.building,
+                            @"district": response.regeocode.addressComponent.district
+                            };
+        [arr addObject:n];
+    }
+    
+    [self.bridge.eventDispatcher sendAppEventWithName:@"ReceiveAMapSearchResult" body:@{
+                                                                                        @"requestId":request.requestId, @"data":arr}];
+}
+
 
 
 -(void)AMapSearchRequest:(id)request didFailWithError:(NSError *)error
@@ -162,6 +235,9 @@ RCT_EXPORT_METHOD(weatherSearch:(NSString *)city isLive:(BOOL) isLive requestId:
     
     for (int i = 0; i < count; i++) {
         NSString *key = [NSString stringWithUTF8String:property_getName(properties[i])];
+//        if ([[obj valueForKey:key] class] == [AMapGeoPoint class] ) {
+//            @todo//
+//        }
         [dict setObject:[obj valueForKey:key] forKey:key];
     }
     

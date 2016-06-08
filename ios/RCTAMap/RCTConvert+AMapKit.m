@@ -51,6 +51,14 @@ RCT_ENUM_CONVERTER(MAUserTrackingMode, (@{
 
 RCT_ARRAY_CONVERTER(AMapCoordinate)
 
++ (AMapGeoPoint *)AMapGeoPoint:(id)json
+{
+    json = [self NSDictionary:json];
+    return [AMapGeoPoint locationWithLatitude:
+                [self CGFloat:json[@"latitude"]]
+                                    longitude:[self CGFloat:json[@"longitude"]]];
+}
+
 //+ (MAAnnotation *)AMapAnnotation:(id)json
 //{
 //    json = [self NSDictionary:json];
