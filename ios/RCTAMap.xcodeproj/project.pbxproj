@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F30D01F81CDC9653002C929B /* RCTConvert+AMapKit.m in Sources */ = {isa = PBXBuildFile; fileRef = F30D01F71CDC9653002C929B /* RCTConvert+AMapKit.m */; };
+		F32C326B1D0A802C00E2057D /* AMapSearchObject+RequestId.m in Sources */ = {isa = PBXBuildFile; fileRef = F32C326A1D0A802C00E2057D /* AMapSearchObject+RequestId.m */; };
 		F33D0C441CFED6B000F64130 /* AMapSearchManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F33D0C431CFED6B000F64130 /* AMapSearchManager.m */; };
 		F37CE9251CF2D3BC00D0457D /* SMCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = F37CE9241CF2D3BC00D0457D /* SMCalloutView.m */; };
 		F37CE9451CF2D43D00D0457D /* AMap.m in Sources */ = {isa = PBXBuildFile; fileRef = F37CE9271CF2D43D00D0457D /* AMap.m */; };
@@ -51,6 +52,8 @@
 		F30D016C1CDB2DC5002C929B /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		F30D01F61CDC9653002C929B /* RCTConvert+AMapKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RCTConvert+AMapKit.h"; sourceTree = "<group>"; };
 		F30D01F71CDC9653002C929B /* RCTConvert+AMapKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RCTConvert+AMapKit.m"; sourceTree = "<group>"; };
+		F32C32691D0A802C00E2057D /* AMapSearchObject+RequestId.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AMapSearchObject+RequestId.h"; sourceTree = "<group>"; };
+		F32C326A1D0A802C00E2057D /* AMapSearchObject+RequestId.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AMapSearchObject+RequestId.m"; sourceTree = "<group>"; };
 		F3360C821CDA051D00FD88BC /* libRCTAMap.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRCTAMap.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F33D0C421CFED5F300F64130 /* AMapSearchManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMapSearchManager.h; sourceTree = "<group>"; };
 		F33D0C431CFED6B000F64130 /* AMapSearchManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMapSearchManager.m; sourceTree = "<group>"; };
@@ -175,6 +178,8 @@
 			children = (
 				F33D0C421CFED5F300F64130 /* AMapSearchManager.h */,
 				F33D0C431CFED6B000F64130 /* AMapSearchManager.m */,
+				F32C32691D0A802C00E2057D /* AMapSearchObject+RequestId.h */,
+				F32C326A1D0A802C00E2057D /* AMapSearchObject+RequestId.m */,
 			);
 			name = Search;
 			sourceTree = "<group>";
@@ -246,6 +251,7 @@
 			files = (
 				F37CE94E1CF2D43D00D0457D /* AMapPolygon.m in Sources */,
 				F37CE9501CF2D43D00D0457D /* AMapPolyline.m in Sources */,
+				F32C326B1D0A802C00E2057D /* AMapSearchObject+RequestId.m in Sources */,
 				F37CE9511CF2D43D00D0457D /* AMapPolylineManager.m in Sources */,
 				F37CE94F1CF2D43D00D0457D /* AMapPolygonManager.m in Sources */,
 				F37CE9471CF2D43D00D0457D /* AMapCalloutManager.m in Sources */,

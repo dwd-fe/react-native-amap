@@ -13,27 +13,11 @@
 #import <AMapSearchKit/AMapSearchKit.h>
 #import <objc/runtime.h>
 
-@interface AMapSearchObject(RequestId)
-@property (nonatomic, strong) NSString* requestId;
-@end
-
-
-@implementation AMapSearchObject(RequestId)
-- (void)setRequestId:(NSString *)requestId
-{
-    objc_setAssociatedObject(self, @selector(requestId), requestId, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-- (NSString *)requestId
-{
-    return  objc_getAssociatedObject(self, @selector(requestId));
-}
-
-@end
+#import "AMapSearchObject+RequestId.h"
 
 @implementation AMapSearchManager
 {
     AMapSearchAPI *_search;
-    AMapInputTipsSearchRequest *_tipsRequest;
 }
 
 -(instancetype)init
@@ -43,24 +27,46 @@
     return self;
 }
 
-//static dispatch_queue_t getMethodQueue()
-//{
-//    static dispatch_queue_t queue;
-//    static dispatch_once_t onceToken;
-//    dispatch_once(&onceToken, ^{
-//        queue = dispatch_queue_create("com.dianwoba.ios.rctamap", DISPATCH_QUEUE_SERIAL);
-//    });
-//    return queue;
-//}
-
 RCT_EXPORT_MODULE();
 
 @synthesize bridge = _bridge;
 
+//RCT_EXPORT_METHOD(poiSearchByKeywords:(NSString *)requestId options:(NSDictionary *)options)
+//{
+//    AMapPOIKeywordsSearchRequest *request = [[AMapPOIKeywordsSearchRequest alloc]init];
+//    request.keywords = options[@"keywords"];
+//    request.city = options[@"city"];
+//    request.cityLimit = options[@"cityLimit"];
+//    request.types = options[@"types"];
+//    request.page = options[@"page"];
+//    request.offset = options[@"offset"];
+//    
+//    [_search AMapPOIKeywordsSearch:request];
+//}
+//
+//RCT_EXPORT_METHOD(poiAroundSearch:(NSString *)requestId options:(NSDictionary *)options)
+//{
+//    AMapPOIAroundSearchRequest *request = [[AMapPOIAroundSearchRequest alloc]init];
+//    request.keywords = options[@"keywords"];
+//    request.radius = options[@"radius"];
+//    NSDictionary *location = options[@"location"];
+//    CGFloat lat = location[@"latitude"];
+//    request.location = [AMapGeoPoint locationWithLatitude:location[@"latitude"] longitude:(CGFloat)location[@"longitude"]]
+//    
+//    request.types = options[@"types"];
+//    request.page = options[@"page"];
+//    request.offset = options[@"offset"];
+//
+//    
+//    [_search AMapPOIAroundSearch:request];
+//}
+
+
+
 
 RCT_EXPORT_METHOD(inputTipsSearch:(NSString *)requestId keys:(NSString *) keys city:(NSString *)city)
 {
-    _tipsRequest = [[AMapInputTipsSearchRequest alloc] init];
+    AMapInputTipsSearchRequest *_tipsRequest = [[AMapInputTipsSearchRequest alloc] init];
 
     _tipsRequest.keywords = keys;
     _tipsRequest.city = city;
