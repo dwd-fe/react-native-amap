@@ -11,6 +11,7 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.bridge.ReadableMap;
 
 
 /**
@@ -57,8 +58,9 @@ public class AMapSearchManager extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void regeocodeSearch(String requestId, LatLonPoint point, Float radius) {
+    public void regeocodeSearch(String requestId, ReadableMap latlon, Float radius) {
         MyGeocodeSearch request = new MyGeocodeSearch(reactContext, requestId);
+        LatLonPoint point = new LatLonPoint(latlon.getDouble("latitude"), latlon.getDouble("longitude"));
         RegeocodeQuery query = new RegeocodeQuery(point, radius != null?radius:1000, GeocodeSearch.AMAP);
 
         request.geocodeSearch.getFromLocationAsyn(query);
