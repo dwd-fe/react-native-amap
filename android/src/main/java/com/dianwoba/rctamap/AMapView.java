@@ -519,7 +519,8 @@ public class AMapView extends MapView implements AMap.InfoWindowAdapter,
 
             LatLngBounds bounds = map.getProjection().getVisibleRegion().latLngBounds;
             if (lastBoundsEmitted == null ||
-                    LatLngBoundsUtils.BoundsAreDifferent(bounds, lastBoundsEmitted)) {
+                    LatLngBoundsUtils.BoundsAreDifferent(bounds, lastBoundsEmitted) &&
+                        map.getCameraPosition() != null) {
                 LatLng center = map.getCameraPosition().target;
                 lastBoundsEmitted = bounds;
                 eventDispatcher.dispatchEvent(new RegionChangeEvent(getId(), bounds, center, true));

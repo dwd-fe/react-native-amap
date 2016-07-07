@@ -181,8 +181,8 @@ public class AMapViewManager extends ViewGroupManager<AMapView> {
                 duration = args.getInt(1);
                 lng = region.getDouble("longitude");
                 lat = region.getDouble("latitude");
-                lngDelta = region.getDouble("longitudeDelta");
-                latDelta = region.getDouble("latitudeDelta");
+                lngDelta = region.hasKey("longitudeDelta")?region.getDouble("longitudeDelta"):0.0;
+                latDelta = region.hasKey("latitudeDelta")?region.getDouble("latitudeDelta"):0.0;
                 LatLngBounds bounds = new LatLngBounds(
                         new LatLng(lat - latDelta / 2, lng - lngDelta / 2), // southwest
                         new LatLng(lat + latDelta / 2, lng + lngDelta / 2)  // northeast
