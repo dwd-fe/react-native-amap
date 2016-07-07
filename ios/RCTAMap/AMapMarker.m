@@ -77,10 +77,9 @@
         // TODO(lmr): Looks like this API was introduces in iOS 8. We may want to handle differently for earlier
         // versions. Right now it's just leaving it with the default color. People needing the colors are free to
         // use their own custom markers.
-        if ([_pinView respondsToSelector:@selector(setPinTintColor:)]) {
-            //not has pinTintColor
-            //_pinView.pinTintColor = self.pinColor;
-        }
+        
+        [_pinView setPinColor:self.pinColor];
+        
 
         return _pinView;
     } else {
@@ -224,13 +223,10 @@
                                                           }];
 }
 
-- (void)setPinColor:(UIColor *)pinColor
+- (void)setPinColor:(MAPinAnnotationColor)pinColor
 {
     _pinColor = pinColor;
-    
-    if ([_pinView respondsToSelector:@selector(setPinTintColor:)]) {
-        //_pinView.pinTintColor = _pinColor;
-    }
+    [_pinView setPinColor:pinColor];
 }
 
 @end

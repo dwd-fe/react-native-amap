@@ -41,7 +41,7 @@ RCT_EXPORT_VIEW_PROPERTY(coordinate, CLLocationCoordinate2D)
 RCT_EXPORT_VIEW_PROPERTY(centerOffset, CGPoint)
 RCT_EXPORT_VIEW_PROPERTY(calloutOffset, CGPoint)
 RCT_REMAP_VIEW_PROPERTY(image, imageSrc, NSString)
-RCT_EXPORT_VIEW_PROPERTY(pinColor, UIColor)
+RCT_EXPORT_VIEW_PROPERTY(pinColor, MAPinAnnotationColor)
 RCT_EXPORT_VIEW_PROPERTY(draggable, BOOL)
 
 RCT_EXPORT_VIEW_PROPERTY(onPress, RCTBubblingEventBlock)

@@ -59,6 +59,13 @@ RCT_ARRAY_CONVERTER(AMapCoordinate)
                                     longitude:[self CGFloat:json[@"longitude"]]];
 }
 
+
+RCT_ENUM_CONVERTER(MAPinAnnotationColor, (@{
+                                            @"red": @(MAPinAnnotationColorRed),
+                                            @"green": @(MAPinAnnotationColorGreen),
+                                            @"purple": @(MAPinAnnotationColorPurple)
+                                            }), MAPinAnnotationColorRed, integerValue)
+
 //+ (MAAnnotation *)AMapAnnotation:(id)json
 //{
 //    json = [self NSDictionary:json];

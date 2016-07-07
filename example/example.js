@@ -32,7 +32,7 @@ class Example extends Component {
             this.refs.map.animateToZoomLevel(10)
             AMapView.Search.AMapInputTipsSearch("肯德基","杭州").then((a)=>{
                 console.log("AMapInputTipsSearch",a);
-            })
+            }).catch((e)=>{console.log(e)})
             AMapView.Search.AMapWeatherSearch("下城区", true).then((a)=>console.log("AMapWeatherSearch:Live",a))
             AMapView.Search.AMapWeatherSearch("下城区", false).then((a)=>console.log("AMapWeatherSearch:Forecast",a))
         }, 3000)
@@ -44,7 +44,7 @@ class Example extends Component {
       <View style={styles.container}>
             <AMapView onPress={(e)=>console.log("Map::onPress", e.nativeEvent)} onLongPress={()=>console.log(arguments)} ref="map" initialRegion={{latitude:30.315888, longitude:120.165817}} apiKey="d7281b2a331af8dbb6b76a2e9c3629df"
                 showsUserLocation={true} showsCompass={true} zoomEnabled={true}  showsScale={true} showsTraffic={true} >
-                <AMapView.Marker draggable onDragEnd={this._hanleMarkeDragEnd} title={this.state.title} coordinate={{latitude:30.315888, longitude:120.165817}} />
+                <AMapView.Marker pinColor="green" draggable onDragEnd={this._hanleMarkeDragEnd} title={this.state.title} description="这是一个好地方" coordinate={{latitude:30.315888, longitude:120.165817}} />
             </AMapView>
       </View>
     );

@@ -59,7 +59,11 @@ var MapMarker = React.createClass({
      * If no custom marker view or custom image is provided, the platform default pin will be used,
      * which can be customized by this color. Ignored if a custom marker is being used.
      */
-    pinColor: PropTypes.string,
+    pinColor: Platform.OS === 'android'? PropTypes.string: PropTypes.oneOf([
+        'red',
+        'green',
+        'purple',
+    ]),,
 
     /**
      * The coordinate for the marker.

@@ -39,7 +39,7 @@ emitter.addListener(
         let {data, error, requestId} = reminder
         if(requestId && promiseQueue[requestId]) {
             let promise = promiseQueue[requestId];
-            if (data.error) {
+            if (error) {
                 promise.reject(error)
             } else {
                 promise.resolve(data)

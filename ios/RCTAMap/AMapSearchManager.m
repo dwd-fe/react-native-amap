@@ -10,6 +10,7 @@
 #import "RCTBridge.h"
 #import "RCTEventDispatcher.h"
 #import "RCTViewManager.h"
+#import <MAMapKit/MAMapURLSearchType.h>
 #import <AMapSearchKit/AMapSearchKit.h>
 #import <objc/runtime.h>
 
@@ -28,6 +29,21 @@
 }
 
 RCT_EXPORT_MODULE();
+
+- (NSDictionary *)constantsToExport
+{
+    return @{ @"DrivingStrategy": @{
+                      @"Fastest":                           @(MADrivingStrategyFastest), //速度最快
+                      @"MinFare":                           @(MADrivingStrategyMinFare), //避免收费
+                      @"Shortest":                          @(MADrivingStrategyShortest), //距离最短
+                      @"NoHighways":                        @(MADrivingStrategyNoHighways), //不走高速
+                      @"AvoidCongestion":                   @(MADrivingStrategyAvoidCongestion) , //躲避拥堵
+                      @"AvoidHighwaysAndFare":              @(MADrivingStrategyAvoidHighwaysAndFare), //不走高速且避免收费
+                      @"AvoidHighwaysAndCongestion":        @(MADrivingStrategyAvoidHighwaysAndCongestion), //不走高速且躲避拥堵
+                      @"AvoidFareAndCongestion":            @(MADrivingStrategyAvoidFareAndCongestion), //躲避收费和拥堵
+                      @"AvoidHighwaysAndFareAndCongestion": @(MADrivingStrategyAvoidHighwaysAndFareAndCongestion) //不走高速躲避收费和拥堵
+                      }};
+}
 
 @synthesize bridge = _bridge;
 
@@ -100,6 +116,17 @@ RCT_EXPORT_METHOD(regeocodeSearch:(NSString *)requestId location:(AMapGeoPoint *
     request.requireExtension = NO;
     request.requestId = requestId;
     [_search AMapReGoecodeSearch:request];
+}
+
+RCT_EXPORT_METHOD(walkingRouteSearch:(NSString *)requestId fromOrigin:(AMapGeoPoint *)origin to:(AMapGeoPoint *)destination with:(NSInteger)strategy)
+{
+    AMapWalkingRouteSearchRequest *request = [[AMapWalkingRouteSearchRequest alloc]init];
+    request.requestId = requestId;
+    request.origin = origin;
+    request.destination = destination;
+    
+    [_search AMapWalkingRouteSearch:request];
+    
 }
 
 
@@ -223,13 +250,36 @@ RCT_EXPORT_METHOD(regeocodeSearch:(NSString *)requestId location:(AMapGeoPoint *
                                                                                         @"requestId":request.requestId, @"data":arr}];
 }
 
+//实现路径搜索的回调函数
+- (void)onRouteSearchDone:(AMapRouteSearchBaseRequest *)request response:(AMapRouteSearchResponse *)response
+{
+    if(response.route != nil)
+    {
+        
+    }
+    
+    if ([request isKindOfClass:[AMapWalkingRouteSearchRequest class]]) {
+        
+    }else if ([request isKindOfClass:[AMapTransitRouteSearchRequest class]]) {
+        
+    }else if ([request isKindOfClass:[AMapDrivingRouteSearchRequest class]]) {
+        
+    }
+    
+    //通过AMapNavigationSearchResponse对象处理搜索结果
+    [self.bridge.eventDispatcher sendAppEventWithName:@"ReceiveAMapSearchResult" body:@{
+                                                                                        @"requestId":request.requestId, @"data":@[]}];
+}
 
 
 -(void)AMapSearchRequest:(id)request didFailWithError:(NSError *)error
 {
     AMapSearchObject *search = (AMapSearchObject *)request;
     [self.bridge.eventDispatcher sendAppEventWithName:@"ReceiveAMapSearchResult" body:@{
-                                                                                     @"id":search.requestId, @"error":error}];
+                                                                                        @"requestId":search.requestId, @"error":@{
+                                                                                                @"domain": error.domain,
+                                                                                                @"userInfo": error.userInfo
+                                                                                                }}];
 }
 
 - (NSDictionary *) dictionaryWithPropertiesOfObject:(id)obj

@@ -89,7 +89,7 @@ public class AMapMarkerManager extends ViewGroupManager<AMapMarker> {
 //        view.setImage(image);
 //    }
 
-    @ReactProp(name = "pinColor", defaultInt = Color.RED, customType = "Color")
+    @ReactProp(name = "pinColor", defaultInt = Color.BLUE, customType = "Color")
     public void setPinColor(AMapMarker view, int pinColor) {
         float[] hsv = new float[3];
         Color.colorToHSV(pinColor, hsv);
