@@ -1,6 +1,6 @@
 {
   "name": "react-native-amap-view",
-  "version": "0.3.7",
+  "version": "0.4.0",
   "description": "React Native AMap component for iOS + Android",
   "main": "index.js",
   "scripts": {
@@ -23,6 +23,10 @@
   },
   "homepage": "https://github.com/dianwoba/react-native-amap#readme",
   "devDependencies": {
+    "babel-eslint": "^6.1.0",
+    "eslint": "^3.0.1",
+    "eslint-plugin-flowtype": "^2.3.0",
+    "eslint-plugin-react": "^5.2.2",
     "react": "^0.14.8",
     "react-native": "^0.24.1"
   }

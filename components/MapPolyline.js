@@ -140,13 +140,13 @@ var MapPolyline = React.createClass({
   },
 });
 
-var styles = StyleSheet.create({
-  polyline: {
-    position: 'absolute',
-    width: 0,
-    height: 0,
-  },
-});
+// var styles = StyleSheet.create({
+//   polyline: {
+//     position: 'absolute',
+//     width: 0,
+//     height: 0,
+//   },
+// });
 
 var AMapPolyline = requireNativeComponent('AMapPolyline', MapPolyline);
 
