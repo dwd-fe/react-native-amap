@@ -11,6 +11,7 @@
 #import "RCTEventDispatcher.h"
 #import "RCTViewManager.h"
 #import <MAMapKit/MAMapURLSearchType.h>
+#import <MAMapKit/MAMapServices.h>
 #import <AMapSearchKit/AMapSearchKit.h>
 #import <objc/runtime.h>
 
@@ -78,6 +79,9 @@ RCT_EXPORT_MODULE();
 //}
 
 
+RCT_EXPORT_METHOD(setApiKey:(NSString *)apiKey){
+    [MAMapServices sharedServices].apiKey = apiKey;
+}
 
 
 RCT_EXPORT_METHOD(inputTipsSearch:(NSString *)requestId keys:(NSString *) keys city:(NSString *)city)

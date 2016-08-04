@@ -48,6 +48,10 @@ emitter.addListener(
     }
 )
 
+export function setApiKey(apiKey) {
+    AMapSearchManager.setApiKey(apiKey)
+}
+
 export const AMapInputTipsSearch = searchRequstFactory('inputTipsSearch')
 export const AMapWeatherSearch = searchRequstFactory('weatherSearch')
 export const AMapGeoCodeSearch = searchRequstFactory('geocodeSearch')
