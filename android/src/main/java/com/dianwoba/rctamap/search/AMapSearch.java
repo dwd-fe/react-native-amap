@@ -24,7 +24,7 @@ class AMapSearch {
 
     protected void sendEventWithData(WritableArray params) {
         WritableMap map = Arguments.createMap();
-        map.putString("requstId", requestId);
+        map.putString("requestId", requestId);
         map.putArray("data", params);
         reactContext
                 .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
