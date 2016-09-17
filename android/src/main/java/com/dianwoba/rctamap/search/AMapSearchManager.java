@@ -34,6 +34,7 @@ public class AMapSearchManager extends ReactContextBaseJavaModule {
     public void inputTipsSearch(String requestId, String keys, String city) {
         InputtipsQuery inputtipsQuery = new InputtipsQuery(keys, city);
         MyInputtips request = new MyInputtips(reactContext, requestId);
+        request.reactContext = reactContext;
 
         request.inputTips.setQuery(inputtipsQuery);
         request.inputTips.requestInputtipsAsyn();
@@ -44,6 +45,7 @@ public class AMapSearchManager extends ReactContextBaseJavaModule {
         WeatherSearchQuery query = new WeatherSearchQuery(city,
                 isLive? WeatherSearchQuery.WEATHER_TYPE_LIVE: WeatherSearchQuery.WEATHER_TYPE_FORECAST);
         MyWeatherSearch request = new MyWeatherSearch(reactContext, requestId);
+        request.reactContext = reactContext;
 
         request.weatherSearch.setQuery(query);
         request.weatherSearch.searchWeatherAsyn();
@@ -52,6 +54,7 @@ public class AMapSearchManager extends ReactContextBaseJavaModule {
     @ReactMethod
     public void geocodeSearch(String requestId, String address, String city) {
         MyGeocodeSearch request = new MyGeocodeSearch(reactContext, requestId);
+        request.reactContext = reactContext;
         GeocodeQuery query = new GeocodeQuery(address, city);
 
         request.geocodeSearch.getFromLocationNameAsyn(query);
@@ -60,6 +63,7 @@ public class AMapSearchManager extends ReactContextBaseJavaModule {
     @ReactMethod
     public void regeocodeSearch(String requestId, ReadableMap latlon, Float radius) {
         MyGeocodeSearch request = new MyGeocodeSearch(reactContext, requestId);
+        request.reactContext = reactContext;
         LatLonPoint point = new LatLonPoint(latlon.getDouble("latitude"), latlon.getDouble("longitude"));
         RegeocodeQuery query = new RegeocodeQuery(point, radius != null?radius:1000, GeocodeSearch.AMAP);
 

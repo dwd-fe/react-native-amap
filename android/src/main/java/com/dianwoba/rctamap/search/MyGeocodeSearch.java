@@ -34,7 +34,7 @@ public class MyGeocodeSearch extends AMapSearch implements GeocodeSearch.OnGeoco
         WritableMap map = Arguments.createMap();
         RegeocodeAddress address = regeocodeResult.getRegeocodeAddress();
 
-        map.putString("formatAddress", address.getFormatAddress());
+        map.putString("formattedAddress", address.getFormatAddress());
         map.putString("province",address.getProvince());
         map.putString("city",address.getCity());
         map.putString("township",address.getTownship());
