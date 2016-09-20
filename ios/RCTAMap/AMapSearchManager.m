@@ -80,7 +80,7 @@ RCT_EXPORT_MODULE();
 
 
 RCT_EXPORT_METHOD(setApiKey:(NSString *)apiKey){
-    [MAMapServices sharedServices].apiKey = apiKey;
+    [AMapSearchServices sharedServices].apiKey = apiKey;
 }
 
 
